@@ -10,26 +10,6 @@ At Klarna we use inline styles extensively. In responsive web applications this 
 
 _Mediamux_ is a React Hook which returns a function accepting any number of arguments, and returning the argument matching the currently active breakpoint. It is heavily inspired by the [array syntax](https://theme-ui.com/getting-started/#responsive-styles) for applying responsive styles in [theme-ui](https://theme-ui.com/) and [styled-system](https://styled-system.com/).
 
-## First steps
-
-<details>
- <summary>Installation (for Admins)</summary>
-  
-  Currently, new repositories can be created only by a Klarna Open Source community lead. Please reach out to us if you need assistance.
-  
-  1. Create a new repository by clicking ‘Use this template’ button.
-  
-  2. Make sure your newly created repository is private.
-  
-  3. Enable Dependabot alerts in your candidate repo settings under Security & analysis. You need to enable ‘Allow GitHub to perform read-only analysis of this repository’ first.
-</details>
-
-1. Update `README.md` and `CHANGELOG.md`.
-
-2. Optionally, change `.github/CONTRIBUTING.md`.
-
-3. Do *not* edit `LICENSE`, `.github/CODE_OF_CONDUCT.md`, and `.github/SECURITY.md`.
-
 ## Usage example
 
 ```js
