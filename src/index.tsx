@@ -45,7 +45,7 @@ function MediamuxProvider({ theme, children }: Props) {
       const mq = matchMediaQueries[index];
       mq.addEventListener('change', handleQueryChange(index, matchingQueries));
     }
-  }, [mediaQueries]);
+  }, [mediaQueries, matchingQueries]);
 
   return (
     <MediamuxContext.Provider value={{ matchingQueries }}>
