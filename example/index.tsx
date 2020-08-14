@@ -3,13 +3,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useMediamux, MediamuxProvider } from '../.';
 
-const theme = {
-  breakpoints: ["768px", "1200px"]
-}
-
 const App = () => {
   return (
-    <MediamuxProvider theme={theme}>
+    <MediamuxProvider>
       <Example />
     </MediamuxProvider>
   );

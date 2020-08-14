@@ -3,10 +3,6 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { useMediamux, MediamuxProvider } from '../src';
 
-const theme = {
-  breakpoints: ['768px', '1200px'],
-};
-
 function TestComponent() {
   const mmx = useMediamux();
   return (
@@ -23,7 +19,7 @@ function TestComponent() {
 describe('it', () => {
   it('renders without crashing', () => {
     const { queryByTestId } = render(
-      <MediamuxProvider theme={theme}>
+      <MediamuxProvider>
         <TestComponent />
       </MediamuxProvider>
     );

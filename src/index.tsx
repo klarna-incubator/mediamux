@@ -9,7 +9,7 @@ type Theme = {
 };
 
 type Props = {
-  theme: Theme;
+  theme?: Theme;
   children: React.ReactNode;
 };
 
@@ -17,9 +17,13 @@ const initialValues: MediamuxContextType = {
   matchingQueries: [],
 };
 
+const defaultTheme = {
+  breakpoints: ['40em', '56em', '64em'],
+};
+
 const MediamuxContext = React.createContext(initialValues);
 
-function MediamuxProvider({ theme, children }: Props) {
+function MediamuxProvider({ theme = defaultTheme, children }: Props) {
   const { breakpoints } = theme;
   const mediaQueries = breakpoints.map(n => `(min-width: ${n})`);
 
