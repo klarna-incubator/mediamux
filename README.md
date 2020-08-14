@@ -1,12 +1,14 @@
-# Project Name
-> Short blurb about what your project does.
+# Mediamux
+> A utility for writing responsive React component in a concise, maintainable, mobile-first way.
 
 [![Build Status][ci-image]][ci-url]
 [![License][license-image]][license-url]
 [![Developed at Klarna][klarna-image]][klarna-url]
 
 
-One to two paragraph statement about your project and what it does.
+At Klarna we use inline styles extensively. In responsive web applications this can lead to verbose, complicated components where we check against specific media queries like `isMobile` or `isDesktop`.
+
+_Mediamux_ is a React Hook which returns a function accepting any number of arguments, and returning the argument matching the currently active breakpoint. It is heavily inspired by the [array syntax](https://theme-ui.com/getting-started/#responsive-styles) for applying responsive styles in [theme-ui](https://theme-ui.com/) and [styled-system](https://styled-system.com/).
 
 ## First steps
 
