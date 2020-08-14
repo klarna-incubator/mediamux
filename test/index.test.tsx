@@ -7,11 +7,11 @@ function TestComponent() {
   const mmx = useMediamux();
   return (
     <div>
-      {mmx([
+      {mmx(
         <div data-testid="small" />,
         <div data-testid="medium" />,
-        <div data-testid="large" />,
-      ])}
+        <div data-testid="large" />
+      )}
     </div>
   );
 }
@@ -107,7 +107,7 @@ describe('it', () => {
       const mmx = useMediamux();
       return (
         <div>
-          {mmx([<div data-testid="small" />, <div data-testid="medium" />])}
+          {mmx(<div data-testid="small" />, <div data-testid="medium" />)}
         </div>
       );
     }

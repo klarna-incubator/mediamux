@@ -33,7 +33,7 @@ function Example() {
   // "large" if viewport is 1200px or larger
   return (
     <div>
-      {mmx(["small", "medium", "large"])}
+      {mmx("small", "medium", "large")}
     </div>
   )
 }
