@@ -57,7 +57,7 @@ function useMediamux() {
   const { matchingQueries } = React.useContext(MediamuxContext);
   const matchingQueriesCount = matchingQueries.filter((x: boolean) => x).length;
 
-  return (x: unknown[]) => x[matchingQueriesCount];
+  return (x: any[]) => x[matchingQueriesCount];
 }
 
 export { useMediamux, MediamuxProvider, MediamuxContext as __Context };

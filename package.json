@@ -37,6 +37,8 @@
   },
   "module": "dist/mediamux.esm.js",
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.3",
+    "@testing-library/react": "^10.4.8",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "husky": "^4.2.5",
