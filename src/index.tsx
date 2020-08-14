@@ -37,22 +37,22 @@ function MediamuxProvider({ theme = defaultTheme, children }: Props) {
     getMediaQueries(theme).map(x => x.matches)
   );
 
-  // todo: fix "any"
-  const handleQueryChange = () => {
+  const handleQueryChange = React.useRef(() => {
     setMatchingQueries(getMediaQueries(theme).map(x => x.matches));
-  };
+  });
 
   React.useEffect(() => {
     const mediaQueryListeners = getMediaQueries(theme);
+    const eventHandler = handleQueryChange.current;
     for (let mq of mediaQueryListeners) {
-      mq.addEventListener('change', handleQueryChange);
+      mq.addEventListener('change', eventHandler);
     }
     return () => {
       for (let mq of mediaQueryListeners) {
-        mq.removeEventListener('change', handleQueryChange);
+        mq.removeEventListener('change', eventHandler);
       }
     };
-  }, [theme]);
+  }, [theme, handleQueryChange]);
 
   return (
     <MediamuxContext.Provider value={{ matchingQueries }}>
