@@ -3,9 +3,13 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { useMediamux, MediamuxProvider } from '../.';
 
+const theme = {
+  breakpoints: ["768px", "1200px"]
+}
+
 const App = () => {
   return (
-    <MediamuxProvider theme={{breakpoints: ["768px", "1200px"]}}>
+    <MediamuxProvider theme={theme}>
       <Example />
     </MediamuxProvider>
   );
@@ -13,10 +17,13 @@ const App = () => {
 
 function Example() {
   const mmx = useMediamux()
+
+  // this will render "small" if viewport < 768px,
+  // "medium" if viewport between 768px and 1200px,
+  // "large" if viewport is 1200px or larger
   return (
     <div>
-      <div>hello there</div>
-      {mmx(["smol", "medium", "large"])}
+      {mmx(["small", "medium", "large"])}
     </div>
   )
 }

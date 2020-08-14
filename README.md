@@ -32,18 +32,56 @@ _Mediamux_ is a React Hook which returns a function accepting any number of argu
 
 ## Usage example
 
-A few motivating and useful examples of how your project can be used. Spice this up with code blocks and potentially more screenshots.
+```js
+const theme = {
+  breakpoints: ["768px", "1200px"]
+}
 
-_For more examples and usage, please refer to the [Docs](TODO)._
+const App = () => {
+  return (
+    <MediamuxProvider theme={theme}>
+      <Example />
+    </MediamuxProvider>
+  );
+};
+
+function Example() {
+  const mmx = useMediamux()
+
+  // this will render "small" if viewport < 768px,
+  // "medium" if viewport between 768px and 1200px,
+  // "large" if viewport is 1200px or larger
+  return (
+    <div>
+      {mmx(["small", "medium", "large"])}
+    </div>
+  )
+}
+```
 
 ## Development setup
 
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
+This project uses [tsdx](https://github.com/formium/tsdx) to set up the development environment.
 
-```sh
-make install
-npm test
+The recommended workflow is to run TSDX in one terminal:
+
+```bash
+yarn start
 ```
+
+This builds to `/dist` and runs the project in watch mode so any edits you save inside `src` causes a rebuild to `/dist`.
+
+Then run the example inside another:
+
+```bash
+cd example
+yarn
+yarn start
+```
+
+To do a one-off build, use `yarn build`.
+
+To run tests, use `yarn test`.
 
 ## How to contribute
 
