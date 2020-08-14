@@ -1,4 +1,4 @@
-import './matchMedia.mock'; // Must be imported before the tested file
+import './matchMedia.mock.js'; // Must be imported before the tested file
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { useMediamux, MediamuxProvider } from '../src';
