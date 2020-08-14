@@ -1,6 +1,6 @@
 {
   "name": "mediamux",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A utility for writing responsive React components",
   "main": "dist/index.js",
   "repository": "git@github.com:klarna-incubator/mediamux.git",
@@ -19,7 +19,8 @@
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "tsdx build"
+    "prepare": "tsdx build",
+    "publish": "np"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -42,6 +43,7 @@
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "husky": "^4.2.5",
+    "np": "^6.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "tsdx": "^0.13.2",
