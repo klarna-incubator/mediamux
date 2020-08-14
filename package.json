@@ -1,6 +1,6 @@
 {
   "name": "mediamux",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A utility for writing responsive React components",
   "main": "dist/index.js",
   "repository": "git@github.com:klarna-incubator/mediamux.git",
