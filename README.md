@@ -1,5 +1,5 @@
 # Mediamux
-> A utility for writing responsive React component in a concise, maintainable, mobile-first way.
+> A utility for writing responsive React components in a concise, maintainable, mobile-first way.
 
 [![Build Status][ci-image]][ci-url]
 [![License][license-image]][license-url]
