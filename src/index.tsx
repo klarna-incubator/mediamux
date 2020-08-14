@@ -21,34 +21,38 @@ const defaultTheme = {
   breakpoints: ['40em', '56em', '64em'],
 };
 
+function getMediaQueries(theme: Theme) {
+  const { breakpoints } = theme;
+  const mediaQueries = breakpoints
+    .map(n => `(min-width: ${n})`)
+    .map(window.matchMedia);
+
+  return mediaQueries;
+}
+
 const MediamuxContext = React.createContext(initialValues);
 
 function MediamuxProvider({ theme = defaultTheme, children }: Props) {
-  const { breakpoints } = theme;
-  const mediaQueries = breakpoints.map(n => `(min-width: ${n})`);
-
   const [matchingQueries, setMatchingQueries] = React.useState(
-    mediaQueries.map(x => window.matchMedia(x).matches)
+    getMediaQueries(theme).map(x => x.matches)
   );
 
   // todo: fix "any"
-  const handleQueryChange = (
-    index: number,
-    currentMatchingQueries: boolean[]
-  ) => (x: any) => {
-    const newMatchingQueries = [...currentMatchingQueries];
-
-    newMatchingQueries[index] = x.matches;
-    setMatchingQueries(newMatchingQueries);
+  const handleQueryChange = () => {
+    setMatchingQueries(getMediaQueries(theme).map(x => x.matches));
   };
 
   React.useEffect(() => {
-    const matchMediaQueries = mediaQueries.map(x => window.matchMedia(x));
-    for (let index = 0; index < matchMediaQueries.length; index++) {
-      const mq = matchMediaQueries[index];
-      mq.addEventListener('change', handleQueryChange(index, matchingQueries));
+    const mediaQueryListeners = getMediaQueries(theme);
+    for (let mq of mediaQueryListeners) {
+      mq.addEventListener('change', handleQueryChange);
     }
-  }, [mediaQueries, matchingQueries]);
+    return () => {
+      for (let mq of mediaQueryListeners) {
+        mq.removeEventListener('change', handleQueryChange);
+      }
+    };
+  }, [theme]);
 
   return (
     <MediamuxContext.Provider value={{ matchingQueries }}>
