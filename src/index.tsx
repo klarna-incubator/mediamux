@@ -4,12 +4,6 @@ type MediamuxContextType = {
   matchingQueries: boolean[];
 };
 
-const initialValues: MediamuxContextType = {
-  matchingQueries: [],
-};
-
-const MediamuxContext = React.createContext(initialValues);
-
 type Theme = {
   breakpoints: String[];
 };
@@ -18,6 +12,12 @@ type Props = {
   theme: Theme;
   children: React.ReactNode;
 };
+
+const initialValues: MediamuxContextType = {
+  matchingQueries: [],
+};
+
+const MediamuxContext = React.createContext(initialValues);
 
 function MediamuxProvider({ theme, children }: Props) {
   const { breakpoints } = theme;
@@ -32,7 +32,6 @@ function MediamuxProvider({ theme, children }: Props) {
     index: number,
     currentMatchingQueries: boolean[]
   ) => (x: any) => {
-    console.log('handle query change: ', index, x, currentMatchingQueries);
     const newMatchingQueries = [...currentMatchingQueries];
 
     newMatchingQueries[index] = x.matches;
@@ -58,7 +57,6 @@ function useMediamux() {
   const { matchingQueries } = React.useContext(MediamuxContext);
   const matchingQueriesCount = matchingQueries.filter((x: boolean) => x).length;
 
-  console.log('>>> ', { matchingQueriesCount });
   return (x: unknown[]) => x[matchingQueriesCount];
 }
 
