@@ -118,6 +118,6 @@ describe('it', () => {
       </MediamuxProvider>
     );
 
-    expect(queryByTestId('large')).toBeTruthy();
+    expect(queryByTestId('medium')).toBeTruthy();
   });
 });
