@@ -12,6 +12,8 @@ _Mediamux_ is a React Hook which returns a function accepting any number of argu
 
 ## Usage example
 
+If you want to see it in action, try [our example on CodeSandbox](https://codesandbox.io/s/unruffled-kepler-jlmdr?file=/src/App.js).
+
 ```js
 const theme = {
   breakpoints: ["768px", "1200px"]
