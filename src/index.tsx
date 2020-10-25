@@ -63,10 +63,9 @@ function MediamuxProvider({ theme = defaultTheme, children }: Props) {
 
 function useMediamux() {
   const { matchingQueries } = React.useContext(MediamuxContext);
-  const matchingQueriesCount = matchingQueries.filter((x: boolean) => x).length;
 
   return function mediamux<T>(...args: T[]) {
-    return args[Math.min(args.length - 1, matchingQueriesCount)];
+    return args.filter((_, i) => matchingQueries[i]).pop() || args[0];
   };
 }
 

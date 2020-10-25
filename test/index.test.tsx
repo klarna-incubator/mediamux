@@ -45,7 +45,7 @@ describe('it', () => {
       </MediamuxProvider>
     );
 
-    expect(queryByTestId('medium')).toBeTruthy();
+    expect(queryByTestId('small')).toBeTruthy();
   });
 
   it('renders second argument if matching first and second media-query', () => {
@@ -77,11 +77,21 @@ describe('it', () => {
       </MediamuxProvider>
     );
 
-    expect(queryByTestId('large')).toBeTruthy();
+    expect(queryByTestId('medium')).toBeTruthy();
   });
 
   it('picks last argument if active mediaquery index > argument array', () => {
     (window.matchMedia as any)
+      .mockImplementationOnce((query: any) => ({
+        matches: true,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(), // deprecated
+        removeListener: jest.fn(), // deprecated
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      }))
       .mockImplementationOnce((query: any) => ({
         matches: true,
         media: query,
@@ -119,5 +129,48 @@ describe('it', () => {
     );
 
     expect(queryByTestId('medium')).toBeTruthy();
+  });
+
+  it('never picks argument for non-matching media query', () => {
+    (window.matchMedia as any)
+      .mockImplementationOnce((query: any) => ({
+        matches: true,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(), // deprecated
+        removeListener: jest.fn(), // deprecated
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      }))
+      .mockImplementationOnce((query: any) => ({
+        matches: false,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(), // deprecated
+        removeListener: jest.fn(), // deprecated
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      }))
+      .mockImplementationOnce((query: any) => ({
+        matches: true,
+        media: query,
+        onchange: null,
+        addListener: jest.fn(), // deprecated
+        removeListener: jest.fn(), // deprecated
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      }));
+
+    const breakpoints = ['40em', '256em', '64em']; // Notice wrong order
+    const { queryByTestId } = render(
+      <MediamuxProvider theme={{ breakpoints }}>
+        <TestComponent />
+      </MediamuxProvider>
+    );
+
+    expect(queryByTestId('large')).toBeTruthy();
   });
 });
