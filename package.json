@@ -42,7 +42,7 @@
     "@testing-library/react": "^10.4.8",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
-    "husky": "^4.2.5",
+    "husky": "^5.0.0",
     "np": "^6.4.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
